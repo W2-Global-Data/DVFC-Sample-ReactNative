@@ -124,7 +124,7 @@ const App: () => React$Node = () => {
     setMessage('Loading...');
     await RNFetchBlob
       .config({timeout: 120000})
-      .fetch('POST', 'https://api.w2globaldata.com/document-verification/verify', {
+      .fetch('POST', 'https://api.w2globaldata.com/document-verification/verify?api-version=1.5', {
         Authorization : `Basic ${W2APIKEY}`,
         'Content-Type' : 'multipart/form-data',
       },
