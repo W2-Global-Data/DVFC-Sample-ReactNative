@@ -1,4 +1,4 @@
-platform :ios, '11.4'
+platform :ios, '14.5'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 source 'https://github.com/W2-Global-Data/cocoapods-podspecs.git'
@@ -7,14 +7,14 @@ source 'https://github.com/CocoaPods/Specs.git'
 pre_install do |installer|
 	installer.analysis_result.specifications.each do |s|
         if s.name == 'Alamofire'
-            s.swift_version = '5.3'
+            s.swift_version = '5.4'
         end
     end
 end
 
 
 target 'reactnative' do
-  use_frameworks!
+  # use_frameworks!
   use_native_modules!
   # Pods for reactnative
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
@@ -72,7 +72,7 @@ target 'reactnative-tvOS' do
   end
 end
 
-  post_install do |installer|
+ post_install do |installer|
     installer.pods_project.targets.each do |target|
       if ['AcuantiOSSDKV11', 'KeychainAccess', 'Socket.IO-Client-Swift', 'Starscream', 'SwiftyJSON'].include? target.name
         target.build_configurations.each do |config|
@@ -80,7 +80,24 @@ end
         end
       end
       target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = '5.3'
+        config.build_settings['SWIFT_VERSION'] = '5.4'
+      end
     end
+    ## Fix for XCode 12.5
+    find_and_replace("../node_modules/react native/React/CxxBridge/RCTCxxBridge.mm", "_initializeModules:(NSArray<id<RCTBridgeModule>> *)modules", "_initializeModules:(NSArray<Class> *)modules")
+    find_and_replace("../node_modules/react-native/ReactCommon/turbomodule/core/platform/ios/RCTTurboModuleManager.mm", "RCTBridgeModuleNameForClass(strongModule))", "RCTBridgeModuleNameForClass(Class(strongModule)))")
+end
+
+
+def find_and_replace(dir, findstr, replacestr)
+  Dir[dir].each do |name|
+      text = File.read(name)
+      replace = text.gsub(findstr,replacestr)
+      if text != replace
+          puts "Fix: " + name
+          File.open(name, "w") { |file| file.puts replace }
+          STDOUT.flush
+      end
   end
+  Dir[dir + '*/'].each(&method(:find_and_replace))
 end

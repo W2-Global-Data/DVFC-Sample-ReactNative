@@ -25,7 +25,10 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-const licenseKey = 'LICENSE_KEY';
+import RNFetchBlob from 'rn-fetch-blob';
+
+const licenseKey = 'W2_LICENSE_KEY_HERE';
+const W2APIKEY = 'W2_API_KEY_HERE';
 
 const App: () => React$Node = () => {
   const [message, setMessage] = useState(true);
@@ -105,6 +108,49 @@ const App: () => React$Node = () => {
     });
   };
 
+  const verifyDocUsingRESTEndpoint = async () => {
+    
+    if (!documentCaptureImage) {
+      Alert.alert('Oops', 'Perform a document capture first before verifying');
+      return;
+    }
+
+    const verifyDataToSend = new FormData();
+    verifyDataToSend.append('DocumentType', 'ID3');
+    verifyDataToSend.append('ClientReference', 'Client-Reference-Verify-ReactNative');
+
+    console.log(documentCaptureImage);
+
+    setMessage('Loading...');
+    await RNFetchBlob
+      .config({timeout: 120000})
+      .fetch('POST', 'https://api.w2globaldata.com/document-verification/verify?api-version=1.5', {
+        Authorization : `Basic ${W2APIKEY}`,
+        'Content-Type' : 'multipart/form-data',
+      },
+      [
+        {
+          name : 'Pages',
+          filename : 'image.png',
+          data : RNFetchBlob.wrap((Platform.OS==='android' ? 'file://' : '') + documentCaptureImage)
+        },
+        {
+          name : 'DocumentType',
+          data : 'ID3'
+        },
+        {
+          name : 'ClientReference',
+          data : 'clientRef-ReactNative'
+        }
+      ])
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      }).catch((err) => {
+        console.log('ERROR', err);
+      })
+  };
+
   const compareFace = () => {
     if (!facialCaptureImage) {
       Alert.alert('Oops', 'Perform a facial capture first before comparing');
@@ -163,6 +209,10 @@ const App: () => React$Node = () => {
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Document Verification</Text>
               <Button title="Verify" onPress={verifyDoc} />
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Document Verification - Rest Endpoint</Text>
+              <Button title="Verify - Using Rest Endpoint" onPress={verifyDocUsingRESTEndpoint} />
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Facial Capture</Text>
