@@ -1,10 +1,13 @@
 PODS:
-  - AcuantiOSSDKV11 (11.2.7):
-    - AcuantiOSSDKV11/AcuantCamera (= 11.2.7)
-    - iProov (~> 7.2.0)
-  - AcuantiOSSDKV11/AcuantCamera (11.2.7):
-    - iProov (~> 7.2.0)
-  - Alamofire (4.9.1)
+  - AcuantiOSSDKV11/AcuantCommon (11.5.1)
+  - AcuantiOSSDKV11/AcuantDocumentProcessing (11.5.1):
+    - AcuantiOSSDKV11/AcuantCommon
+  - AcuantiOSSDKV11/AcuantFaceMatch (11.5.1):
+    - AcuantiOSSDKV11/AcuantCommon
+  - AcuantiOSSDKV11/AcuantHGLiveness (11.5.1):
+    - AcuantiOSSDKV11/AcuantCommon
+  - AcuantiOSSDKV11/AcuantImagePreparation (11.5.1):
+    - AcuantiOSSDKV11/AcuantCommon
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.62.2)
@@ -25,11 +28,6 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - iProov (7.2.2):
-    - KeychainAccess (~> 4.1.0)
-    - Socket.IO-Client-Swift (~> 15.2.0)
-    - SwiftyJSON (~> 4.0.0)
-  - KeychainAccess (4.1.0)
   - RCTRequired (0.62.2)
   - RCTTypeSafety (0.62.2):
     - FBLazyVector (= 0.62.2)
@@ -252,43 +250,37 @@ PODS:
     - React-cxxreact (= 0.62.2)
     - React-jsi (= 0.62.2)
     - ReactCommon/callinvoker (= 0.62.2)
-  - SnapKit (5.0.1)
-  - Socket.IO-Client-Swift (15.2.0):
-    - Starscream (~> 3.1)
-  - Starscream (3.1.1)
-  - SwiftyJSON (4.0.0)
-  - w2-document-verification-capture-client-react-native (1.4.5):
+  - rn-fetch-blob (0.12.0):
+    - React-Core
+  - w2-document-verification-capture-client-react-native (1.9.6):
     - React
-    - W2SDK/W2DocumentVerificationClientCapture (= 1.4.0)
-    - W2SDKCore (= 1.4.0)
-  - w2-document-verification-client-react-native (1.4.5):
+    - W2SDK/W2DocumentVerificationClientCapture (= 1.9.0)
+    - W2SDKCore (= 1.9.0)
+  - w2-document-verification-client-react-native (1.9.6):
     - React
-    - W2SDK/W2DocumentVerificationClient (= 1.4.0)
-    - W2SDKCore (= 1.4.0)
-  - w2-facial-comparison-capture-client-react-native (1.4.5):
+    - W2SDK/W2DocumentVerificationClient (= 1.9.0)
+    - W2SDKCore (= 1.9.0)
+  - w2-facial-comparison-capture-client-react-native (1.9.6):
     - React
-    - W2SDK/W2FacialComparisonClientCapture (= 1.4.0)
-    - W2SDKCore (= 1.4.0)
-  - w2-facial-comparison-client-react-native (1.4.5):
+    - W2SDK/W2FacialComparisonClientCapture (= 1.9.0)
+    - W2SDKCore (= 1.9.0)
+  - w2-facial-comparison-client-react-native (1.9.6):
     - React
-    - W2SDK/W2FacialComparisonClient (= 1.4.0)
-    - W2SDKCore (= 1.4.0)
-  - W2SDK/W2DocumentVerificationClient (1.4.0):
-    - Alamofire (= 4.9.1)
-    - W2SDKCore (= 1.4.0)
-  - W2SDK/W2DocumentVerificationClientCapture (1.4.0):
-    - Alamofire (= 4.9.1)
-    - W2SDKCore (= 1.4.0)
-  - W2SDK/W2FacialComparisonClient (1.4.0):
-    - Alamofire (= 4.9.1)
-    - W2SDKCore (= 1.4.0)
-  - W2SDK/W2FacialComparisonClientCapture (1.4.0):
-    - Alamofire (= 4.9.1)
-    - W2SDKCore (= 1.4.0)
-  - W2SDKCore (1.4.0):
-    - AcuantiOSSDKV11 (= 11.2.7)
-    - Alamofire (= 4.9.1)
-    - SnapKit (= 5.0.1)
+    - W2SDK/W2FacialComparisonClient (= 1.9.0)
+    - W2SDKCore (= 1.9.0)
+  - W2SDK/W2DocumentVerificationClient (1.9.0):
+    - W2SDKCore (= 1.9.0)
+  - W2SDK/W2DocumentVerificationClientCapture (1.9.0):
+    - W2SDKCore (= 1.9.0)
+  - W2SDK/W2FacialComparisonClient (1.9.0):
+    - W2SDKCore (= 1.9.0)
+  - W2SDK/W2FacialComparisonClientCapture (1.9.0):
+    - W2SDKCore (= 1.9.0)
+  - W2SDKCore (1.9.0):
+    - AcuantiOSSDKV11/AcuantDocumentProcessing (= 11.5.1)
+    - AcuantiOSSDKV11/AcuantFaceMatch (= 11.5.1)
+    - AcuantiOSSDKV11/AcuantHGLiveness (= 11.5.1)
+    - AcuantiOSSDKV11/AcuantImagePreparation (= 11.5.1)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -319,6 +311,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/callinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - rn-fetch-blob (from `../node_modules/rn-fetch-blob`)
   - "w2-document-verification-capture-client-react-native (from `../node_modules/@w2-global-data/w2-document-verification-capture-client-react-native`)"
   - "w2-document-verification-client-react-native (from `../node_modules/@w2-global-data/w2-document-verification-client-react-native`)"
   - "w2-facial-comparison-capture-client-react-native (from `../node_modules/@w2-global-data/w2-facial-comparison-capture-client-react-native`)"
@@ -326,20 +319,12 @@ DEPENDENCIES:
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  "git@github.com:W2-Global-Data/cocoapods-podspecs.git":
-    - W2SDK
-    - W2SDKCore
   https://github.com/CocoaPods/Specs.git:
     - AcuantiOSSDKV11
-    - Alamofire
-    - iProov
-    - KeychainAccess
-    - SnapKit
-    - Socket.IO-Client-Swift
-    - Starscream
-    - SwiftyJSON
-  trunk:
     - boost-for-react-native
+  https://github.com/W2-Global-Data/cocoapods-podspecs.git:
+    - W2SDK
+    - W2SDKCore
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -390,6 +375,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  rn-fetch-blob:
+    :path: "../node_modules/rn-fetch-blob"
   w2-document-verification-capture-client-react-native:
     :path: "../node_modules/@w2-global-data/w2-document-verification-capture-client-react-native"
   w2-document-verification-client-react-native:
@@ -402,16 +389,13 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AcuantiOSSDKV11: ec4324a94b630bb8d9b1c6a8c31d366e97eec3c7
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AcuantiOSSDKV11: e7d9b96346929d2a9566d3a50dd781a93a31bc8f
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   FBLazyVector: 4aab18c93cd9546e4bfed752b4084585eca8b245
   FBReactNativeSpec: 5465d51ccfeecb7faa12f9ae0024f2044ce4044e
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
-  iProov: e42cea754898c6ccd3ddd2d586f3763ba4e78e95
-  KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
   RCTRequired: cec6a34b3ac8a9915c37e7e4ad3aa74726ce4035
   RCTTypeSafety: 93006131180074cffa227a1075802c89a49dd4ce
   React: 29a8b1a02bd764fb7644ef04019270849b9a7ac3
@@ -431,18 +415,15 @@ SPEC CHECKSUMS:
   React-RCTText: fae545b10cfdb3d247c36c56f61a94cfd6dba41d
   React-RCTVibration: 4356114dbcba4ce66991096e51a66e61eda51256
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
-  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
-  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
-  w2-document-verification-capture-client-react-native: 517499c0f6bc0daa3545368ce16d280be9abe27e
-  w2-document-verification-client-react-native: 410371d120eec751c2e1271cf0315289ea9218f5
-  w2-facial-comparison-capture-client-react-native: 420e8195d4e9d30427537c4852fbc217765d74f3
-  w2-facial-comparison-client-react-native: 94898faf37d450d5cf57f5e1724825aea073ad96
-  W2SDK: ba9f4c01888b7f70ac0f3b4ab552b16cf2b6e48b
-  W2SDKCore: d092d742f1ad5ed460a150c5bce41c12e1a9300c
+  rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
+  w2-document-verification-capture-client-react-native: 6563be94dbfc4f6af915a86941f558e4abba7442
+  w2-document-verification-client-react-native: 021320c97b287a2d9329b6eac245158f59cb1b43
+  w2-facial-comparison-capture-client-react-native: fb52cb0d9a0362f9f202e28777bb587481802a1c
+  w2-facial-comparison-client-react-native: 203c96ceba36199befdc0a1fd14eddc731c0671e
+  W2SDK: 41bf8ccf5e5c7351fbf113071218ec8c3f16a828
+  W2SDKCore: 3605da5e6e0e6186391a41222fcbdef5d78568ba
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
 
-PODFILE CHECKSUM: be4d04cce45e44ea4558ce6c35f67a6a32ed36f7
+PODFILE CHECKSUM: e356334b3fa9cf2d0b4920b5240cb8c8947d8846
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1
