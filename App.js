@@ -25,12 +25,13 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-import RNFetchBlob from 'rn-fetch-blob';
+import {NativeModules} from 'react-native';
+const RNFetchBlob = NativeModules.RNFetchBlob
 
 const licenseKey = 'W2_LICENSE_KEY_HERE';
 const W2APIKEY = 'W2_API_KEY_HERE';
 
-const App: () => React$Node = () => {
+const App = () => {
   const [message, setMessage] = useState(true);
   const [documentCaptureImage, setDocumentCaptureImage] = useState(false);
   const [facialCaptureImage, setFacialCaptureImage] = useState(false);

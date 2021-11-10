@@ -10,12 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@w2-global-data/w2-document-verification-capture-client-react-native": "^1.9.6",
-    "@w2-global-data/w2-document-verification-client-react-native": "^1.9.6",
-    "@w2-global-data/w2-facial-comparison-capture-client-react-native": "^1.9.6",
-    "@w2-global-data/w2-facial-comparison-client-react-native": "^1.9.6",
+    "@w2-global-data/w2-document-verification-capture-client-react-native": "^1.9.7",
+    "@w2-global-data/w2-document-verification-client-react-native": "^1.9.7",
+    "@w2-global-data/w2-facial-comparison-capture-client-react-native": "^1.9.7",
+    "@w2-global-data/w2-facial-comparison-client-react-native": "^1.9.7",
     "react": "16.11.0",
-    "react-native": "0.62.2",
+    "react-native": "0.66.0",
     "rn-fetch-blob": "^0.12.0"
   },
   "devDependencies": {

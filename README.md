@@ -16,7 +16,7 @@ using the cli can be found here: https://reactnative.dev/docs/environment-setup.
  to run the app on a device.
 6. Open the main `App.js` file. Replace "YOUR LICENSE KEY HERE" with the license key provided by W2.
  
-Note: The android and iOS apps can be run through Android Studio and XCode respectively. However only XCode 12.5 is currently supported for iOS.
+Note: The android and iOS apps can be run through Android Studio and XCode respectively. Currently supporting XCode 13 with the latest package release.
 
 
 
