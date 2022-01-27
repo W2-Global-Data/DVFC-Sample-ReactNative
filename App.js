@@ -109,6 +109,36 @@ const App = () => {
     });
   };
 
+
+  const classifyVerifyDoc = () => {
+
+    if (!documentCaptureImage) {
+      Alert.alert('Oops', 'Perform a document capture first before verifying');
+      return;
+    }
+
+    setMessage('Loading...');
+    DocumentVerificationClient.build(licenseKey, (error, msg) => {
+      if (!error) {
+        DocumentVerificationClient.classifyAndVerify(
+          'CLIENT_REFERENCE',
+          'ID3',
+          true,
+          documentCaptureImage,
+          null,
+          (err, result) => {
+            console.log('Results: ' + result);
+            let resultJson = JSON.stringify(result);
+            console.log(resultJson);
+            setMessage(err || 'Success!');
+          },
+        );
+      } else {
+        setMessage(error);
+      }
+    });
+  };
+
   const verifyDocUsingRESTEndpoint = async () => {
     
     if (!documentCaptureImage) {
@@ -214,6 +244,10 @@ const App = () => {
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Document Verification - Rest Endpoint</Text>
               <Button title="Verify - Using Rest Endpoint" onPress={verifyDocUsingRESTEndpoint} />
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Document Verification - Classify And Verify</Text>
+              <Button title="Attempt Classify And Verify" onPress={classifyVerifyDoc} />
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Facial Capture</Text>
